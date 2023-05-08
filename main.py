@@ -61,9 +61,9 @@ def combine_files(file1, file2, output_file):
         read2 = file2.readlines()
 
     merge = []  # creating empty list to add both lines into
-    for i, j in zip(read1, read2):  # looping through both files using zip function to pair the first lines of each
+    for file_1, file_2 in zip(read1, read2):  # looping through both files using zip function to pair the first lines of each
         # file together
-        merge.append(i.strip('\n') + ' ' + j)  # removing the newline and adding them in one line
+        merge.append(file_1.strip('\n') + ' ' + file_2)  # removing the newline and adding them in one line
 
     with open(output_file, 'w') as output:
         output.writelines(merge)
