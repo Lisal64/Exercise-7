@@ -27,12 +27,12 @@ def add_greeting(input_file, output_file):
     with open(input_file, 'r') as input:  # opening it to update, as I need to read and write sth into it
         read = input.readlines()  # have to do it in a list to be able to iterate through it
     # adding Hello in the front using a for loop iterating through every index of the list
-    update = []
+    add = []
     for i in read:
-        new = 'Hello ' + i
-        update.append(new)
+        greeting = 'Hello ' + i
+        add.append(greeting)
     with open(output_file, 'w') as output:
-        output.writelines(update)  # writing the list into a new file
+        output.writelines(add)  # writing the list into a new file
 
 
 add_greeting('pretty_names.txt', 'greeting_names.txt')
@@ -43,10 +43,10 @@ add_greeting('pretty_names.txt', 'greeting_names.txt')
 def strip_greeting(input_file, output_file):
     with open(input_file, 'r') as input:
         read = input.read()
-        strip = read.replace('Hello ', '')  # have to use the replace function
+        rep = read.replace('Hello ', '')  # have to use the replace function
         # with using strip it would change the names as well
     with open(output_file, 'w') as output:
-        output.write(strip)
+        output.write(rep)
 
 
 strip_greeting('greeting_names.txt', 'strip_greeting.txt')
@@ -60,13 +60,13 @@ def combine_files(file1, file2, output_file):
     with open(file2, 'r') as file2:
         read2 = file2.readlines()
 
-    combined = []  # creating empty list to add both lines into
+    merge = []  # creating empty list to add both lines into
     for i, j in zip(read1, read2):  # looping through both files using zip function to pair the first lines of each
         # file together
-        combined.append(i.strip('\n') + ' ' + j)  # removing the newline and adding them in one line
+        merge.append(i.strip('\n') + ' ' + j)  # removing the newline and adding them in one line
 
     with open(output_file, 'w') as output:
-        output.writelines(combined)
+        output.writelines(merge)
 
 
 combine_files('greeting_names.txt', 'strip_greeting.txt', 'combined.txt')
